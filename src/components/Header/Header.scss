@@ -1,0 +1,29 @@
+.Header {
+  grid-area: header;
+  background-color: black;
+  padding: 0.8rem;
+  border: 1px solid black;
+  display: grid;
+  grid-template-areas: 'logo nav';
+  grid-template-columns: 200px auto;
+  grid-template-rows: 100%;
+
+  img {
+    grid-area: logo;
+    height: 100%;
+  }
+
+  nav {
+    grid-area: nav;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    align-items: center;
+    p {
+      color: white;
+      margin: 0;
+      font-weight: 500;
+      font-size: 24px;
+    }
+  }
+}

@@ -1,3 +1,32 @@
-h1 {
-  color: grey;
+div.Home {
+  display: grid;
+  grid-template-areas: 'header header' 'footer main';
+  grid-template-columns: 117px auto;
+  grid-template-rows: 91px auto;
+  height: 100vh;
+
+  main {
+    grid-area: main;
+    margin: 68px 0 0 109px;
+  }
+
+  h1 {
+    font-weight: 500;
+    font-size: 48px;
+    margin: 0;
+
+    span {
+      color: red;
+    }
+  }
+
+  p.congratulation {
+    font-weight: 400;
+    font-size: 18px;
+    margin: 35px 0 0 0;
+  }
+
+  .homeKeydataContainer {
+    background-color: grey;
+  }
 }

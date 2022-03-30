@@ -1,0 +1,41 @@
+.Keydata {
+  background-color: #fbfbfb;
+  //   background-color: grey;
+  width: 258px;
+  height: 124px;
+  border-radius: 5px;
+  display: grid;
+  grid-template-areas: 'icon amount' 'icon name';
+
+  .amount {
+    grid-area: amount;
+    font-size: 20px;
+    font-weight: 700;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+  }
+
+  .name {
+    grid-area: name;
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+
+  .keydataIconContainer {
+    grid-area: icon;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .keydataIcon {
+      img {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+}
