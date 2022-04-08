@@ -79,6 +79,46 @@ function getLipid() {
   return data.keyData.lipidCount
 }
 
+function getUserActivity() {
+  for (const activities of USER_ACTIVITY) {
+    if (activities.userId === userId) {
+      return activities
+    }
+  }
+  return null
+}
+
+function getBarchartData() {
+  let i = 0
+  const userActivity = getUserActivity()
+  userActivity.sessions.forEach((session) => {
+    session['name'] = i
+    i++
+  })
+  return userActivity.sessions
+}
+
+/**
+ * Need to know if dataMax-dataMin is even or odd number (called in Poids.jsx)
+ *
+ * @return  {Boolean}
+ */
+function calculDomain() {
+  let max = 0
+  let min = 1000
+  const userActivity = getUserActivity()
+  userActivity.sessions.forEach((session) => {
+    if (session.poids < min) min = session.poids
+    if (session.poids > max) max = session.poids
+  })
+
+  if ((max - min) % 2 === 0) {
+    return true
+  } else {
+    return false
+  }
+}
+
 export {
   getMainData,
   getName,
@@ -86,4 +126,6 @@ export {
   getProtein,
   getCarbonhydrate,
   getLipid,
+  getBarchartData,
+  calculDomain,
 }

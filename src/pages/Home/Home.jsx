@@ -1,6 +1,7 @@
 import Header from '../../components/Header/Header.jsx'
 import Footer from '../../components/Footer/Footer.jsx'
 import Keydata from '../../components/Keydata/Keydata.jsx'
+import Poids from '../../components/Poids/Poids.jsx'
 import {
   getName,
   getCalories,
@@ -8,24 +9,6 @@ import {
   getLipid,
   getProtein,
 } from '../../services/dataManager.js'
-
-// import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip } from 'recharts'
-// const data = [
-//   { name: 'Page A', uv: 400, pv: 2400, amt: 2400 },
-//   { name: 'Page A', uv: 300, pv: 2400, amt: 2400 },
-//   { name: 'Page A', uv: 500, pv: 2400, amt: 2400 },
-//   { name: 'Page A', uv: 100, pv: 2400, amt: 2400 },
-// ]
-
-// const renderLineChart = (
-//   <LineChart width={400} height={400} data={data}>
-//     <Line type="monotone" dataKey="uv" stroke="black" />
-//     <CartesianGrid stroke="green" />
-//     <XAxis dataKey="name" />
-//     <YAxis />
-//     <Tooltip />
-//   </LineChart>
-// )
 
 function Home() {
   const name = getName()
@@ -44,31 +27,35 @@ function Home() {
         <p className="congratulation">
           Félicitation ! Vous avez explosé vos objectifs hier 👏
         </p>
-        {/* {renderLineChart} */}
+        <Poids />
         <div className="homeKeydataContainer">
           <Keydata
             name="Calories"
             amount={calories}
             icon="iconFire"
             key={'Calories' + calories}
+            bgColor={'rgba(255, 0, 0, 0.1)'}
           />
           <Keydata
             name="Proteines"
             amount={protein}
             icon="iconChicken"
             key={'Proteines' + protein}
+            bgColor={'rgba(74, 184, 255, 0.1)'}
           />
           <Keydata
             name="Glucide"
             amount={carbonhydrate}
             icon="iconApple"
             key={'Glucide' + carbonhydrate}
+            bgColor={'rgba(249, 206, 35, 0.1)'}
           />
           <Keydata
             name="Lipides"
             amount={lipid}
             icon="iconCheesburger"
             key={'Lipides' + lipid}
+            bgColor={'rgba(253, 81, 129, 0.1)'}
           />
         </div>
       </main>

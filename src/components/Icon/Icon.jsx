@@ -1,7 +1,11 @@
-function Icon({ iconName = '', addClassName = '' }) {
+function Icon({ iconName = '', addClassName = '', bgColor = '' }) {
   const icon = require('../../assets/' + iconName + '.png')
   const sumClassName = 'Icon ' + addClassName
-  return <div className={sumClassName}>{<img src={icon} alt={iconName} />}</div>
+  return (
+    <div className={sumClassName} style={{ backgroundColor: bgColor }}>
+      {<img src={icon} alt={iconName} />}
+    </div>
+  )
 }
 
 export default Icon
