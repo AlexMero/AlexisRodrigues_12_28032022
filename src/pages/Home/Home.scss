@@ -27,6 +27,33 @@ div.Home {
   }
 
   .homeKeydataContainer {
-    background-color: grey;
+    grid-area: keyData;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .HomeContainer{
+    display: grid;
+    grid-template-areas: 'poids poids poids keyData' 'objectifs radarSection kpi keyData';
+    grid-template-columns: 23% 23% 23% auto;
+
+    .Poids{
+      grid-area: poids;
+      margin: 0 0 3rem 0;
+    }
+
+    .RadarSection{
+      grid-area: radarSection;
+    } 
+
+    .Objectifs{
+      grid-area: objectifs;
+    }
+
+    .Kpi{
+      grid-area: kpi;
+    }
   }
 }

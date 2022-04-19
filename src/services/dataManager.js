@@ -27,6 +27,15 @@ import {
 const mocked = true
 const userId = 12
 
+const translation = {
+  cardio: 'cardio',
+  energy: 'energie',
+  endurance: 'endurance',
+  strength: 'force',
+  speed: 'vitesse',
+  intensity: 'intensité',
+}
+
 /**
  * get USER_MAIN_DATA
  *
@@ -119,6 +128,57 @@ function calculDomain() {
   }
 }
 
+function getAverageData() {
+  let result
+  for (const average of USER_AVERAGE_SESSIONS) {
+    if (average.userId === userId) {
+      result = average.sessions
+    }
+  }
+  return result
+}
+
+//
+// function getPerformanceData() {
+//   let result
+//   let kindList
+//   console.log(USER_PERFORMANCE)
+//   for (const performance of USER_PERFORMANCE) {
+//     if (performance.userId === userId) {
+//       result = performance.data
+//       kindList = performance.kind
+//       break
+//     }
+//   }
+
+//   console.log(result)
+//   result.forEach((data) => {
+//     data.kind = kindList[data.kind]
+//   })
+
+//   return result
+// })
+function getPerformanceData() {
+  function getUserData() {
+    for (const performance of USER_PERFORMANCE) {
+      if (performance.userId === userId) return performance
+    }
+  }
+  const { kind, data } = getUserData();
+  data.forEach((singleData) => {
+    singleData.kind = translation[kind[singleData.kind]]
+  })
+  console.log(data)
+  return data
+}
+
+function getScoreDate() {
+  const data = getMainData()
+  return { value: data.score * 100, name: 'score', fill: 'red' }
+  // { value: 1, name: 'unscore', fill: '#FBFBFB' },
+}
+// #FBFBFB
+
 export {
   getMainData,
   getName,
@@ -128,4 +188,7 @@ export {
   getLipid,
   getBarchartData,
   calculDomain,
+  getAverageData,
+  getPerformanceData,
+  getScoreDate,
 }
