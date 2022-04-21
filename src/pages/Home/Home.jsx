@@ -12,31 +12,35 @@ import {
   getLipid,
   getProtein,
 } from '../../services/dataManager.js'
+import { useContext } from 'react'
+
+import { StoreContext } from '../../providers/Store'
 
 function Home() {
-  const name = getName()
-  const calories = getCalories()
-  const carbonhydrate = getCarbonhydrate()
-  const lipid = getLipid()
-  const protein = getProtein()
+  const [store] = useContext(StoreContext)
+  getName()
+  // const calories = await getCalories()
+  // const carbonhydrate = await getCarbonhydrate()
+  // const lipid = await getLipid()
+  // const protein = await getProtein()
 
   return (
     <div className="Home">
       <Header />
       <main>
         <h1>
-          Bonjour <span>{name}</span>
+          Bonjour <span>{store.USER_MAIN_DATA.userInfos.name}</span>
         </h1>
         <p className="congratulation">
           Félicitation ! Vous avez explosé vos objectifs hier 👏
         </p>
         <div className="HomeContainer">
-          <Poids />
+          {/* <Poids />
           <Objectifs />
           <RadarSection />
-          <Kpi />
+          <Kpi /> */}
           <div className="homeKeydataContainer">
-            <Keydata
+            {/* <Keydata
               name="Calories"
               amount={calories}
               icon="iconFire"
@@ -63,7 +67,7 @@ function Home() {
               icon="iconCheesburger"
               key={'Lipides' + lipid}
               bgColor={'rgba(253, 81, 129, 0.1)'}
-            />
+            /> */}
           </div>
         </div>
       </main>

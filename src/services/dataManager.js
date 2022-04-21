@@ -24,7 +24,9 @@ import {
   USER_PERFORMANCE,
 } from './data.js'
 
-const mocked = true
+import { store } from '../providers/Store'
+
+const mocked = false
 const userId = 12
 
 const translation = {
@@ -39,10 +41,19 @@ const translation = {
 /**
  * get USER_MAIN_DATA
  *
- * @return  {mainUserData}
+ * @return  {Promise.<void>}
  */
-function getMainData() {
-  if (mocked) return extractFromMocked(USER_MAIN_DATA)
+async function getMainData() {
+  if (mocked)
+    store.set({
+      USER_MAIN_DATA: extractFromMocked(USER_MAIN_DATA),
+    })
+  const response = await fetch(`http://localhost:3000/user/${userId}`)
+  const data = await response.json()
+  console.log(data.data)
+  store.set({
+    USER_MAIN_DATA: data.data,
+  })
 }
 
 /**
@@ -61,30 +72,30 @@ function extractFromMocked(data) {
 /**
  * get name of current user from getMainData
  *
- * @return  {String}  name
+ * @return  {Promise.<String>}  name
  */
-function getName() {
-  const data = getMainData()
+async function getName() {
+  const data = await getMainData()
   return data.userInfos.firstName
 }
 
-function getCalories() {
-  const data = getMainData()
+async function getCalories() {
+  const data = await getMainData()
   return data.keyData.calorieCount
 }
 
-function getProtein() {
-  const data = getMainData()
+async function getProtein() {
+  const data = await getMainData()
   return data.keyData.proteinCount
 }
 
-function getCarbonhydrate() {
-  const data = getMainData()
+async function getCarbonhydrate() {
+  const data = await getMainData()
   return data.keyData.carbohydrateCount
 }
 
-function getLipid() {
-  const data = getMainData()
+async function getLipid() {
+  const data = await getMainData()
   return data.keyData.lipidCount
 }
 
@@ -158,13 +169,13 @@ function getAverageData() {
 
 //   return result
 // })
-function getPerformanceData() {
-  function getUserData() {
+async function getPerformanceData() {
+  async function getUserData() {
     for (const performance of USER_PERFORMANCE) {
       if (performance.userId === userId) return performance
     }
   }
-  const { kind, data } = getUserData();
+  const { kind, data } = await getUserData()
   data.forEach((singleData) => {
     singleData.kind = translation[kind[singleData.kind]]
   })
@@ -172,8 +183,8 @@ function getPerformanceData() {
   return data
 }
 
-function getScoreDate() {
-  const data = getMainData()
+async function getScoreDate() {
+  const data = await getMainData()
   return { value: data.score * 100, name: 'score', fill: 'red' }
   // { value: 1, name: 'unscore', fill: '#FBFBFB' },
 }
