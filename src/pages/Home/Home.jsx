@@ -5,69 +5,62 @@ import Poids from '../../components/Poids/Poids.jsx'
 import Objectifs from '../../components/Objectifs/Objectifs.jsx'
 import RadarSection from '../../components/RadarSection/RadarSection.jsx'
 import Kpi from '../../components/Kpi/Kpi.jsx'
-import {
-  getName,
-  getCalories,
-  getCarbonhydrate,
-  getLipid,
-  getProtein,
-} from '../../services/dataManager.js'
-import { useContext } from 'react'
-
+import { getName, getKeyData, getUserData } from '../../services/dataManager.js'
+import { useContext, useEffect } from 'react'
 import { StoreContext } from '../../providers/Store'
 
 function Home() {
-  const [store] = useContext(StoreContext)
-  getName()
-  // const calories = await getCalories()
-  // const carbonhydrate = await getCarbonhydrate()
-  // const lipid = await getLipid()
-  // const protein = await getProtein()
+  const [store, updateStore] = useContext(StoreContext)
+  useEffect(() => {
+    getUserData()
+  }, [])
+  const name = getName()
+  const keyData = getKeyData()
 
   return (
     <div className="Home">
       <Header />
       <main>
         <h1>
-          Bonjour <span>{store.USER_MAIN_DATA.userInfos.name}</span>
+          Bonjour <span>{name}</span>
         </h1>
         <p className="congratulation">
           Félicitation ! Vous avez explosé vos objectifs hier 👏
         </p>
         <div className="HomeContainer">
-          {/* <Poids />
+          <Poids />
           <Objectifs />
           <RadarSection />
-          <Kpi /> */}
+          <Kpi />
           <div className="homeKeydataContainer">
-            {/* <Keydata
+            <Keydata
               name="Calories"
-              amount={calories}
+              amount={keyData.calorieCount}
               icon="iconFire"
-              key={'Calories' + calories}
+              key={'Calories' + keyData.calorieCount}
               bgColor={'rgba(255, 0, 0, 0.1)'}
             />
             <Keydata
               name="Proteines"
-              amount={protein}
+              amount={keyData.proteinCount}
               icon="iconChicken"
-              key={'Proteines' + protein}
+              key={'Proteines' + keyData.proteinCount}
               bgColor={'rgba(74, 184, 255, 0.1)'}
             />
             <Keydata
               name="Glucide"
-              amount={carbonhydrate}
+              amount={keyData.carbohydrateCount}
               icon="iconApple"
-              key={'Glucide' + carbonhydrate}
+              key={'Glucide' + keyData.carbohydrateCount}
               bgColor={'rgba(249, 206, 35, 0.1)'}
             />
             <Keydata
               name="Lipides"
-              amount={lipid}
+              amount={keyData.lipidCount}
               icon="iconCheesburger"
-              key={'Lipides' + lipid}
+              key={'Lipides' + keyData.lipidCount}
               bgColor={'rgba(253, 81, 129, 0.1)'}
-            /> */}
+            />
           </div>
         </div>
       </main>

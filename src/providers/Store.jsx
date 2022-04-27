@@ -6,7 +6,7 @@
  */
 
  import React from "react";
- import data  from "../services/defaultData";
+ import data  from "../services/defaultData.js";
  
  const StoreContext = React.createContext(undefined);
  

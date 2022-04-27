@@ -1,5 +1,31 @@
-.Objectifs{
-    background-color: red;
-    width: max-content;
-    border-radius: 5px;
+.Objectifs {
+  background-color: red;
+  width: max-content;
+  border-radius: 5px;
+  position: relative;
+
+  .objectifsTitle {
+    position: absolute;
+    left: 13.18%;
+    right: 29.46%;
+    top: 11.03%;
+    bottom: 67.3%;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 24px;
+    color: #ffffff;
+
+    mix-blend-mode: normal;
+    opacity: 0.5;
+  }
+
+  .averageTooltip {
+    background-color: white;
+
+    .value {
+      padding: 10px 5px 10px 5px;
+    }
+  }
 }
