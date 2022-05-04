@@ -1,5 +1,9 @@
 import logo from '../../assets/logo.png'
 
+/**
+ * React component for the Header
+ * @component
+ */
 function Header() {
   return (
     <section className="Header">

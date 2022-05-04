@@ -7,12 +7,20 @@ import {
 } from 'recharts'
 import { getPerformanceData } from '../../services/dataManager.js'
 
+/**
+ * React component for the RadarSection
+ * @component
+ */
 function RadarSection() {
   const data = getPerformanceData()
-  console.log(data)
   return <div className="RadarSection">{renderRadarCharts(data)}</div>
 }
 
+/**
+ * render from recharts
+ * @param {*} data - data from dataManager.js
+ * @returns
+ */
 function renderRadarCharts(data) {
   return (
     <ResponsiveContainer width="100%">

@@ -37,7 +37,7 @@ const translation = {
 setServerBaseUrl('http://localhost:3000/user/')
 
 /**
- * get USER_MAIN_DATA
+ * update store with user data mocked or from api
  *
  * @return  {Promise.<void>}
  */
@@ -81,10 +81,20 @@ function getName() {
   return store.get.USER_MAIN_DATA.userInfos.firstName
 }
 
+/**
+ * get data for keyData
+ *
+ * @return  {Object} - {calorieCount, carbohydrateCount, lipidCount, proteinCount}
+ */
 function getKeyData() {
   return store.get.USER_MAIN_DATA.keyData
 }
 
+/**
+ * get data for Poids
+ *
+ * @return  {Array[Object]} - array of session object [{day, kilogram, calories}]
+ */
 function getPoidsData() {
   let result = []
   for (const session of store.get.USER_ACTIVITY.sessions) {
@@ -97,6 +107,11 @@ function getPoidsData() {
   return result
 }
 
+/**
+ * get data for Average
+ *
+ * @return  {Array[Object]} - array of session object [{day, sessionLength}]
+ */
 function getAverageData() {
   const numberToLetter = {
     1: 'L',
@@ -117,6 +132,11 @@ function getAverageData() {
   return result
 }
 
+/**
+ * get data for Performance
+ *
+ * @return  {Array[Object]} - array of performance object [{value, kind}]
+ */
 function getPerformanceData() {
   let result = []
   for (const performance of store.get.USER_PERFORMANCE.data) {
@@ -125,9 +145,15 @@ function getPerformanceData() {
       kind: translation[store.get.USER_PERFORMANCE.kind[performance.kind]],
     })
   }
+  console.log(result)
   return result
 }
 
+/**
+ * get data for Score
+ *
+ * @return  {Object} - {value, name, fill}
+ */
 function getScoreData() {
   let score = 0
   if (store.get.USER_MAIN_DATA.todayScore)
@@ -140,6 +166,11 @@ function getScoreData() {
   }
 }
 
+/**
+ * extract userId and mocked from url
+ *
+ * @return  {Object} - {userId, mocked}
+ */
 function extractFromUrl() {
   let userIdString = window.location.pathname.split('/')[2] || '1'
   let userId = parseInt(userIdString)

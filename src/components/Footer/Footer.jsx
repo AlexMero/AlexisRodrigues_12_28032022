@@ -1,5 +1,9 @@
 import Icon from '../Icon/Icon.jsx'
 
+/**
+ * React component for the Footer
+ * @component
+ */
 function Footer() {
   return (
     <section className="Footer">

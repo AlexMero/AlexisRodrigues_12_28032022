@@ -8,6 +8,10 @@ import {
 } from 'recharts'
 import { getAverageData } from '../../services/dataManager.js'
 
+/**
+ * React component for the Objectifs
+ * @component
+ */
 function Objectifs() {
   const data = getAverageData()
   return (
@@ -18,6 +22,11 @@ function Objectifs() {
   )
 }
 
+/**
+ * render from recharts
+ * @param {*} data - data from dataManager.js
+ * @returns
+ */
 function renderLineCharts(data) {
   return (
     <ResponsiveContainer
@@ -72,6 +81,11 @@ function renderLineCharts(data) {
   )
 }
 
+/**
+ * Customize Tooltip
+ * @param {Object} param
+ * @returns
+ */
 function AverageTooltip({ active, payload }) {
   return (
     active && (

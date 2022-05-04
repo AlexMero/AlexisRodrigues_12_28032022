@@ -1,6 +1,10 @@
-import { RadialBarChart, RadialBar, ResponsiveContainer } from 'recharts'
+import { RadialBarChart, RadialBar } from 'recharts'
 import { getScoreData } from '../../services/dataManager.js'
 
+/**
+ * React component for the Kpi
+ * @component
+ */
 function Kpi() {
   const data = getScoreData()
   return <div className="Kpi">{renderPieCharts(data)}</div>
@@ -12,6 +16,11 @@ const max = {
   value: 100,
 }
 
+/**
+ * render from recharts
+ * @param {*} data - data from dataManager.js
+ * @returns
+ */
 function renderPieCharts(data) {
   return (
     <div className="KpiContainer">

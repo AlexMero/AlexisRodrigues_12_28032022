@@ -1,6 +1,10 @@
 import Header from '../../components/Header/Header.jsx'
 import Footer from '../../components/Footer/Footer.jsx'
 
+/**
+ * React component for the Error page
+ * @component
+ */
 function Error() {
   return (
     <div className="Home">

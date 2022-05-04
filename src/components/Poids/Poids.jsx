@@ -11,11 +11,20 @@ import {
 
 import { getPoidsData } from '../../services/dataManager.js'
 
+/**
+ * React component for the Poids
+ * @component
+ */
 function Poids() {
   const datas = getPoidsData()
   return <div className="Poids">{renderBarChart(datas)}</div>
 }
 
+/**
+ * render from recharts
+ * @param {*} datas - data from dataManager.js
+ * @returns
+ */
 function renderBarChart(datas) {
   return (
     <ResponsiveContainer width="100%" height={320}>
@@ -83,10 +92,20 @@ function renderBarChart(datas) {
   )
 }
 
+/**
+ * Customize Legend
+ * @param {Object} value
+ * @returns
+ */
 const renderColorfulLegendText = (value) => {
   return <span style={{ color: '#74798C' }}>{value}</span>
 }
 
+/**
+ * Customize Tooltip
+ * @param {Object} param
+ * @returns
+ */
 function CustomTooltip({ active, payload }) {
   return (
     active && (

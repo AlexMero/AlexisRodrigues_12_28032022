@@ -1,70 +1,44 @@
-# Getting Started with Create React App
+# OpenClassrooms - Project 12
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**Project Name: SportSee**  
+**Project Title: "Develop a sport analytics dashboard with React"**
 
-## Available Scripts
+## Objectives
 
-In the project directory, you can run:
+- Develop a sport analytics dashboard according to this [figma](https://www.figma.com/file/BMomGVZqLZb811mDMShpLu/UI-design-Sportify-FR?node-id=0%3A1)
+- Handle API calls
+- Use [Recharts](https://recharts.org/en-US/) to build graphics
 
-### `npm start`
+## SportSee - Analytics dashboard
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+SportSee is an app which allows every sports enjoyer to easily follow his performances and activity.
+Here you will find the analytics dashboard page of the application, this page will display the following content:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Daily activity bar chart  
+  Give informations about the user weigth and the amount of calories burned for the last ten days.
+- Average sessions line chart  
+  Give informations about the sessions duration for the last seven days.
+- Performance radar chart  
+  Display strengths of the user and potential areas for improvement among intensity, speed, strength, stamina, energy and cardio.
+- Score radial chart  
+  Show the actual progression of the user based on the set target.
+- Key datas cards  
+  Indicate amount of Calories, proteins, carbohydrate and lipids recommended for the user program.
 
-### `npm test`
+## Prerequisites
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- [NodeJS (**version 12.18**)](https://nodejs.org/en/)
+- [React](https://fr.reactjs.org/)
+- [Npm](https://www.npmjs.com/)
 
-### `npm run build`
+## Installation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. First of all, go to [this repository](https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard) and follow the instructions.  
+   It will allows you to run the micro API for the sports analytics dashboard.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Once you have installed the backend :
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+2. Clone this repository on your computer.
+3. Install the dependencies with the `npm install` command.
+4. Launch the app with the `npm start`.
+5. To auto-compile Sass run `npm watch_scss`.

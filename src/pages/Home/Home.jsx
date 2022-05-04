@@ -9,6 +9,10 @@ import { getName, getKeyData, getUserData } from '../../services/dataManager.js'
 import { useContext, useEffect } from 'react'
 import { StoreContext } from '../../providers/Store'
 
+/**
+ * React component for the Home page
+ * @component
+ */
 function Home() {
   const [store, updateStore] = useContext(StoreContext)
   useEffect(() => {
