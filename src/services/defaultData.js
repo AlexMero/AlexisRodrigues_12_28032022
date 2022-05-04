@@ -26,7 +26,7 @@ const data = {
   USER_PERFORMANCE: {
     userId: 0,
     kind: {},
-    data: [],
+    data: [{ value: 0, kind: 0 }],
   },
 }
 

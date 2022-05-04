@@ -1,8 +1,7 @@
 .Keydata {
   background-color: #fbfbfb;
-  //   background-color: grey;
-  width: 258px;
-  height: 124px;
+  min-width: 200px;
+  min-height: 100px;
   border-radius: 5px;
   display: grid;
   grid-template-areas: 'icon amount' 'icon name';

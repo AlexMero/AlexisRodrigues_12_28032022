@@ -1,13 +1,13 @@
 div.Home {
   display: grid;
   grid-template-areas: 'header header' 'footer main';
-  grid-template-columns: 117px auto;
-  grid-template-rows: 91px auto;
+  grid-template-columns: 7rem calc(100vw - 7rem);
+  grid-template-rows: 5.5rem auto;
   height: 100vh;
 
   main {
     grid-area: main;
-    margin: 68px 0 0 109px;
+    margin: 4rem 0 0 6rem;
   }
 
   h1 {
@@ -23,7 +23,7 @@ div.Home {
   p.congratulation {
     font-weight: 400;
     font-size: 18px;
-    margin: 35px 0 0 0;
+    margin: 2rem 0 3rem 0;
   }
 
   .homeKeydataContainer {
@@ -34,26 +34,42 @@ div.Home {
     justify-content: space-between;
   }
 
-  .HomeContainer{
+  .HomeContainer {
     display: grid;
-    grid-template-areas: 'poids poids poids keyData' 'objectifs radarSection kpi keyData';
-    grid-template-columns: 23% 23% 23% auto;
+    grid-template-areas: 'poids keyData' 'subContainer keyData';
+    grid-template-columns: 65% 35%;
 
-    .Poids{
+    .Poids {
       grid-area: poids;
       margin: 0 0 3rem 0;
     }
 
-    .RadarSection{
-      grid-area: radarSection;
-    } 
-
-    .Objectifs{
-      grid-area: objectifs;
+    .HomeSubContainer {
+      grid-area: subContainer;
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: center;
+      justify-content: space-between;
     }
+  }
+}
 
-    .Kpi{
-      grid-area: kpi;
+@media screen and (max-width: 1439px) {
+  div.Home {
+    .HomeContainer {
+      grid-template-areas: 'keyData' 'poids' 'subContainer';
+      grid-template-columns: 95%;
+
+      .Poids {
+        margin: 3rem 0 3rem 0;
+      }
+    }
+    .homeKeydataContainer {
+      flex-flow: row nowrap;
+    }
+    main {
+      margin: 4rem 0 0 2.5rem;
+      // padding-left: ;
     }
   }
 }

@@ -1,20 +1,20 @@
-.Kpi{
-    width: 100%;
-    background-color: #FBFBFB;
+.Kpi {
+  background-color: #fbfbfb;
 
-    .KpiContainer{
-        position:relative;
-        p{
-            text-align: center;
-            width: 4rem;
-            position: absolute;
-            top: 85px;
-            left: 100px;
+  .KpiContainer {
+    position: relative;
+    margin: 0;
+    p {
+      text-align: center;
+      width: 4rem;
+      position: absolute;
+      top: 85px;
+      left: 100px;
 
-            span{
-                font-size: 25px;
-                font-weight: bold;
-            }
-        }
+      span {
+        font-size: 25px;
+        font-weight: bold;
+      }
     }
+  }
 }

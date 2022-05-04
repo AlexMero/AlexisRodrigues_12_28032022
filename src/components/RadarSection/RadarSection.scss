@@ -1,5 +1,12 @@
-.RadarSection{
-    background-color: #282D30;
-    width: max-content;
-    border-radius: 5px;
+.RadarSection {
+  width: 258px;
+  height: 263px;
+  background-color: #282d30;
+  border-radius: 5px;
+
+  .responsiveRadar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }

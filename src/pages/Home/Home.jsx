@@ -29,9 +29,11 @@ function Home() {
         </p>
         <div className="HomeContainer">
           <Poids />
-          <Objectifs />
-          <RadarSection />
-          <Kpi />
+          <div className="HomeSubContainer">
+            <Objectifs />
+            <RadarSection />
+            <Kpi />
+          </div>
           <div className="homeKeydataContainer">
             <Keydata
               name="Calories"

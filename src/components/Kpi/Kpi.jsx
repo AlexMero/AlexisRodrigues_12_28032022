@@ -1,4 +1,4 @@
-import { RadialBarChart, RadialBar } from 'recharts'
+import { RadialBarChart, RadialBar, ResponsiveContainer } from 'recharts'
 import { getScoreData } from '../../services/dataManager.js'
 
 function Kpi() {
@@ -25,16 +25,11 @@ function renderPieCharts(data) {
         endAngle={-155}
         cx="50%"
         cy="50%"
+        margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
       >
-        <RadialBar
-          dataKey="value"
-          background
-          // label={{ position: 'center' }}
-          cornerRadius={10}
-          // isAnimationActive={false}
-        />
+        <RadialBar dataKey="value" background cornerRadius={10} />
         <circle cx="50%" cy="50%" fill="white" r="85"></circle>
-        <text x="30" y="25" width={147} fontSize="15" fontWeight="500">
+        <text x="30" y="35" width={147} fontSize="15" fontWeight="500">
           Score
         </text>
       </RadialBarChart>

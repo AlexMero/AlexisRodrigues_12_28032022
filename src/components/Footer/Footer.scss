@@ -6,4 +6,12 @@
   align-items: center;
   justify-content: center;
   border: 1px solid black;
+  span {
+    position: absolute;
+    bottom: 60px;
+    color: white;
+    font-size: 0.75rem;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+  }
 }

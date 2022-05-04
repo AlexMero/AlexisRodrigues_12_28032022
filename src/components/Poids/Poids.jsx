@@ -16,19 +16,6 @@ function Poids() {
   return <div className="Poids">{renderBarChart(datas)}</div>
 }
 
-const renderColorfulLegendText = (value) => {
-  return <span style={{ color: '#74798C' }}>{value}</span>
-}
-
-function cutomDomain() {
-  // const evenNumber = calculDomain()
-  // if (evenNumber) {
-  //   return ['dataMin - 1', 'dataMax + 1']
-  // } else {
-  return ['dataMin - 1', 'dataMax + 2']
-  // }
-}
-
 function renderBarChart(datas) {
   return (
     <ResponsiveContainer width="100%" height={320}>
@@ -56,9 +43,10 @@ function renderBarChart(datas) {
           axisLine={false}
           tickLine={false}
           tickMargin={44}
-          domain={cutomDomain()}
+          // domain={cutomDomain()}
+          domain={['dataMin - 1', 'dataMax + 2']}
         />
-        <Tooltip />
+        <Tooltip content={<CustomTooltip active={{}} payload={{}} />} />
         <Legend
           formatter={renderColorfulLegendText}
           iconType={'circle'}
@@ -92,6 +80,21 @@ function renderBarChart(datas) {
         />
       </BarChart>
     </ResponsiveContainer>
+  )
+}
+
+const renderColorfulLegendText = (value) => {
+  return <span style={{ color: '#74798C' }}>{value}</span>
+}
+
+function CustomTooltip({ active, payload }) {
+  return (
+    active && (
+      <div className="CustomTooltip">
+        <p>{`${payload[0].value}kg`}</p>
+        <p>{`${payload[1].value}Kcal`}</p>
+      </div>
+    )
   )
 }
 

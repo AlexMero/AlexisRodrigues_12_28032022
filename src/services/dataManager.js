@@ -17,19 +17,13 @@
  * @property {Number} lipidCount
  */
 
-import {
-  USER_MAIN_DATA,
-  USER_ACTIVITY,
-  USER_AVERAGE_SESSIONS,
-  USER_PERFORMANCE,
-} from './data.js'
+import { USER_MAIN_DATA } from './data.js'
 
 import { fetcher, setServerBaseUrl } from './fetcher.js'
 
 import { store } from '../providers/Store'
 
-const mocked = false
-const userId = 12
+const { mocked, userId } = extractFromUrl()
 
 const translation = {
   cardio: 'cardio',
@@ -73,6 +67,7 @@ async function getUserData() {
  */
 function extractFromMocked(data) {
   for (const mockedData of data) {
+    console.log(mockedData)
     if (mockedData.id === userId) return mockedData
   }
 }
@@ -91,11 +86,35 @@ function getKeyData() {
 }
 
 function getPoidsData() {
-  return store.get.USER_ACTIVITY.sessions
+  let result = []
+  for (const session of store.get.USER_ACTIVITY.sessions) {
+    result.push({
+      day: session.day.slice(-1),
+      kilogram: session.kilogram,
+      calories: session.calories,
+    })
+  }
+  return result
 }
 
 function getAverageData() {
-  return store.get.USER_AVERAGE_SESSIONS.sessions
+  const numberToLetter = {
+    1: 'L',
+    2: 'M',
+    3: 'M',
+    4: 'J',
+    5: 'V',
+    6: 'S',
+    7: 'D',
+  }
+  let result = []
+  store.get.USER_AVERAGE_SESSIONS.sessions.forEach((session) => {
+    result.push({
+      day: numberToLetter[session.day],
+      sessionLength: session.sessionLength,
+    })
+  })
+  return result
 }
 
 function getPerformanceData() {
@@ -103,130 +122,38 @@ function getPerformanceData() {
   for (const performance of store.get.USER_PERFORMANCE.data) {
     result.push({
       value: performance.value,
-      kind: store.get.USER_PERFORMANCE.kind[performance.kind],
+      kind: translation[store.get.USER_PERFORMANCE.kind[performance.kind]],
     })
   }
   return result
 }
 
 function getScoreData() {
+  let score = 0
+  if (store.get.USER_MAIN_DATA.todayScore)
+    score = store.get.USER_MAIN_DATA.todayScore
+  if (store.get.USER_MAIN_DATA.score) score = store.get.USER_MAIN_DATA.score
   return {
-    value: store.get.USER_MAIN_DATA.todayScore * 100,
+    value: score * 100,
     name: 'score',
     fill: 'red',
   }
 }
 
-// async function getCalories() {
-//   const data = await getMainData()
-//   return data.keyData.calorieCount
-// }
-
-// async function getProtein() {
-//   const data = await getMainData()
-//   return data.keyData.proteinCount
-// }
-
-// async function getCarbonhydrate() {
-//   const data = await getMainData()
-//   return data.keyData.carbohydrateCount
-// }
-
-// async function getLipid() {
-//   const data = await getMainData()
-//   return data.keyData.lipidCount
-// }
-
-// function getUserActivity() {
-//   for (const activities of USER_ACTIVITY) {
-//     if (activities.userId === userId) {
-//       return activities
-//     }
-//   }
-//   return null
-// }
-
-// function getBarchartData() {
-//   let i = 0
-//   const userActivity = getUserActivity()
-//   userActivity.sessions.forEach((session) => {
-//     session['name'] = i
-//     i++
-//   })
-//   return userActivity.sessions
-// }
-
-// /**
-//  * Need to know if dataMax-dataMin is even or odd number (called in Poids.jsx)
-//  *
-//  * @return  {Boolean}
-//  */
-// function calculDomain() {
-//   let max = 0
-//   let min = 1000
-//   const userActivity = getUserActivity()
-//   userActivity.sessions.forEach((session) => {
-//     if (session.poids < min) min = session.poids
-//     if (session.poids > max) max = session.poids
-//   })
-
-//   if ((max - min) % 2 === 0) {
-//     return true
-//   } else {
-//     return false
-//   }
-// }
-
-// function getAverageData() {
-//   let result
-//   for (const average of USER_AVERAGE_SESSIONS) {
-//     if (average.userId === userId) {
-//       result = average.sessions
-//     }
-//   }
-//   return result
-// }
-
-// //
-// // function getPerformanceData() {
-// //   let result
-// //   let kindList
-// //   console.log(USER_PERFORMANCE)
-// //   for (const performance of USER_PERFORMANCE) {
-// //     if (performance.userId === userId) {
-// //       result = performance.data
-// //       kindList = performance.kind
-// //       break
-// //     }
-// //   }
-
-// //   console.log(result)
-// //   result.forEach((data) => {
-// //     data.kind = kindList[data.kind]
-// //   })
-
-// //   return result
-// // })
-// async function getPerformanceData() {
-//   async function getUserData() {
-//     for (const performance of USER_PERFORMANCE) {
-//       if (performance.userId === userId) return performance
-//     }
-//   }
-//   const { kind, data } = await getUserData()
-//   data.forEach((singleData) => {
-//     singleData.kind = translation[kind[singleData.kind]]
-//   })
-//   console.log(data)
-//   return data
-// }
-
-// async function getScoreDate() {
-//   const data = await getMainData()
-//   return { value: data.score * 100, name: 'score', fill: 'red' }
-//   // { value: 1, name: 'unscore', fill: '#FBFBFB' },
-// }
-// // #FBFBFB
+function extractFromUrl() {
+  let userIdString = window.location.pathname.split('/')[2] || '1'
+  let userId = parseInt(userIdString)
+  const mocked = window.location.search.slice(1) === 'mocked'
+  if (
+    window.location.pathname.split('/')[1] === 'user' &&
+    ![18, 12].includes(userId)
+  )
+    window.location.href = '/404'
+  return {
+    userId,
+    mocked,
+  }
+}
 
 export {
   getUserData,

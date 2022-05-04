@@ -7,6 +7,7 @@ function Footer() {
       <Icon iconName={'iconSwim'} key="iconSwim" />
       <Icon iconName={'iconBike'} key="iconBike" />
       <Icon iconName={'iconDumbbell'} key="iconDumbbell" />
+      <span>Copiryght, SportSee 2020</span>
     </section>
   )
 }

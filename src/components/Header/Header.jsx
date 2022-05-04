@@ -3,7 +3,9 @@ import logo from '../../assets/logo.png'
 function Header() {
   return (
     <section className="Header">
-      <img src={logo} alt="logo sport see" />
+      <div className="imgContainer">
+        <img src={logo} alt="logo sport see" />
+      </div>
       <nav>
         <p>Accueil</p>
         <p>Profil</p>
