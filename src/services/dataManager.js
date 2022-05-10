@@ -145,7 +145,6 @@ function getPerformanceData() {
       kind: translation[store.get.USER_PERFORMANCE.kind[performance.kind]],
     })
   }
-  console.log(result)
   return result
 }
 
