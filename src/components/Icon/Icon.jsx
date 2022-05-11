@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types'
+
 /**
  * React component for the Icon
  * @param {Object} props - properties
@@ -14,6 +16,18 @@ function Icon({ iconName = '', addClassName = '', bgColor = '' }) {
       {<img src={icon} alt={iconName} />}
     </div>
   )
+}
+
+Icon.propTypes = {
+  iconName: PropTypes.string,
+  addClassName: PropTypes.string,
+  bgColor: PropTypes.string,
+}
+
+Icon.defaultProps = {
+  iconName: '',
+  addClassName: '',
+  bgColor: '',
 }
 
 export default Icon

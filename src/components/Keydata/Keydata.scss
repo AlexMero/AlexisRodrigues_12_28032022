@@ -38,3 +38,16 @@
     }
   }
 }
+
+@media screen and (max-width: 1439px) {
+  .Keydata {
+    min-width: 150px;
+    min-height: 75px;
+    .amount {
+      font-size: 15px;
+    }
+    .name {
+      font-size: 11px;
+    }
+  }
+}

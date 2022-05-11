@@ -17,6 +17,7 @@ import { getPoidsData } from '../../services/dataManager.js'
  */
 function Poids() {
   const datas = getPoidsData()
+  console.log(datas)
   return <div className="Poids">{renderBarChart(datas)}</div>
 }
 
@@ -111,7 +112,7 @@ function CustomTooltip({ active, payload }) {
     active && (
       <div className="CustomTooltip">
         <p>{`${payload[0].value}kg`}</p>
-        <p>{`${payload[1].value}Kcal`}</p>
+        {/* <p>{`${payload[1].value}Kcal`}</p> */}
       </div>
     )
   )

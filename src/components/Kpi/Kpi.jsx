@@ -22,13 +22,38 @@ const max = {
  * @returns
  */
 function renderPieCharts(data) {
+  let widthPx
+  let heightPx
+  let innerradius
+  let outerRadius
+  let circleR
+  let textX
+  let textY
+  if (window.matchMedia('(min-width: 1439px)').matches) {
+    widthPx = 258
+    heightPx = 263
+    innerradius = 80
+    outerRadius = 100
+    circleR = '85'
+    textX = '30'
+    textY = '35'
+  } else {
+    widthPx = 200
+    heightPx = 225
+    innerradius = 60
+    outerRadius = 83
+    circleR = '65'
+    textX = '25'
+    textY = '35'
+  }
+
   return (
     <div className="KpiContainer">
       <RadialBarChart
-        width={258}
-        height={263}
-        innerRadius={80}
-        outerRadius={100}
+        width={widthPx}
+        height={heightPx}
+        innerRadius={innerradius}
+        outerRadius={outerRadius}
         data={[max, data]}
         startAngle={205}
         endAngle={-155}
@@ -37,8 +62,8 @@ function renderPieCharts(data) {
         margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
       >
         <RadialBar dataKey="value" background cornerRadius={10} />
-        <circle cx="50%" cy="50%" fill="white" r="85"></circle>
-        <text x="30" y="35" width={147} fontSize="15" fontWeight="500">
+        <circle cx="50%" cy="50%" fill="white" r={circleR}></circle>
+        <text x={textX} y={textY} width={147} fontSize="15" fontWeight="500">
           Score
         </text>
       </RadialBarChart>

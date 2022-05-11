@@ -57,18 +57,20 @@ div.Home {
 @media screen and (max-width: 1439px) {
   div.Home {
     .HomeContainer {
-      grid-template-areas: 'keyData' 'poids' 'subContainer';
-      grid-template-columns: 95%;
+      // grid-template-areas: 'keyData' 'poids' 'subContainer';
+      // grid-template-columns: 95%;
+
+      grid-template-columns: 80% 20%;
 
       .Poids {
-        margin: 3rem 0 3rem 0;
+        // margin: 3rem 0 3rem 0;
       }
     }
     .homeKeydataContainer {
-      flex-flow: row nowrap;
+      // flex-flow: row nowrap;
     }
     main {
-      margin: 4rem 0 0 2.5rem;
+      margin: 1.5rem 0 0 2rem;
       // padding-left: ;
     }
   }

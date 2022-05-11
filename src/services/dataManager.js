@@ -17,11 +17,21 @@
  * @property {Number} lipidCount
  */
 
-import { USER_MAIN_DATA } from './data.js'
+import {
+  USER_ACTIVITY,
+  USER_AVERAGE_SESSIONS,
+  USER_MAIN_DATA,
+  USER_PERFORMANCE,
+} from './data.js'
 
 import { fetcher, setServerBaseUrl } from './fetcher.js'
 
 import { store } from '../providers/Store'
+
+import UserMainData from './UserMainData.js'
+import UserActivity from './UserActivity.js'
+import UserAverageSession from './UserAverageSession.js'
+import UserPerformance from './UserPerformance.js'
 
 const { mocked, userId } = extractFromUrl()
 
@@ -42,19 +52,30 @@ setServerBaseUrl('http://localhost:3000/user/')
  * @return  {Promise.<void>}
  */
 async function getUserData() {
-  if (mocked)
+  if (mocked) {
     store.set({
-      USER_MAIN_DATA: extractFromMocked(USER_MAIN_DATA),
+      USER_MAIN_DATA: new UserMainData(extractFromMocked(USER_MAIN_DATA)),
+      USER_ACTIVITY: new UserActivity(extractFromMocked(USER_ACTIVITY)),
+      USER_AVERAGE_SESSIONS: new UserAverageSession(
+        extractFromMocked(USER_AVERAGE_SESSIONS)
+      ),
+      USER_PERFORMANCE: new UserPerformance(
+        extractFromMocked(USER_PERFORMANCE)
+      ),
     })
-  const mainData = await fetcher(userId)
+    return
+  }
+  const mainData = await fetcher(userId).catch(
+    () => (window.location.href = '/404')
+  )
   const activityData = await fetcher(userId + '/activity')
   const averageData = await fetcher(userId + '/average-sessions')
   const performanceData = await fetcher(userId + '/performance')
   store.set({
-    USER_MAIN_DATA: mainData.data,
-    USER_ACTIVITY: activityData.data,
-    USER_AVERAGE_SESSIONS: averageData.data,
-    USER_PERFORMANCE: performanceData.data,
+    USER_MAIN_DATA: new UserMainData(mainData.data),
+    USER_ACTIVITY: new UserActivity(activityData.data),
+    USER_AVERAGE_SESSIONS: new UserAverageSession(averageData.data),
+    USER_PERFORMANCE: new UserPerformance(performanceData.data),
   })
 }
 
@@ -67,8 +88,8 @@ async function getUserData() {
  */
 function extractFromMocked(data) {
   for (const mockedData of data) {
-    console.log(mockedData)
-    if (mockedData.id === userId) return mockedData
+    if (mockedData.id === userId || mockedData.userId === userId)
+      return mockedData
   }
 }
 

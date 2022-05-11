@@ -1,4 +1,5 @@
 import Icon from '../Icon/Icon.jsx'
+import PropTypes from 'prop-types'
 
 /**
  * React component for the KeyData
@@ -27,6 +28,13 @@ function Keydata({ name, amount, icon, bgColor }) {
       <span className="name">{name}</span>
     </div>
   )
+}
+
+Keydata.propTypes = {
+  name: PropTypes.string,
+  amount: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  icon: PropTypes.string.isRequired,
+  bgColor: PropTypes.string,
 }
 
 export default Keydata

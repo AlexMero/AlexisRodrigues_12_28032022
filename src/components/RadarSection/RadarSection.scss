@@ -10,3 +10,10 @@
     justify-content: center;
   }
 }
+
+@media screen and (max-width: 1439px) {
+  .RadarSection {
+    width: 200px;
+    height: 225px;
+  }
+}
